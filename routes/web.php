@@ -20,8 +20,11 @@ Route::get('/', function () {
 
 
 
-Route::get('/post', [PostController::class, 'index'])->name('post.index');
 
+Route::get('/post', [PostController::class, 'index'])->name('post.index');
+Route::post('/login', [PostController::class, 'login'])->name('post.login');
+Route::get('/dashboard', [PostController::class, 'index'])->name('post.index');
+//Route::resource('post', PostController::class);;
 
 
 Route::get('/dashboard', function () {
