@@ -19,7 +19,11 @@ class PostController extends Controller
 
         $pageTitle = "Hello";
 
-        $posts = Post::all();
+        //$posts = auth()->user()->posts;
+
+
+
+        dd($pageTitle);
 
         return view('post.index', compact('posts', 'pageTitle'));
     }
@@ -86,6 +90,11 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        //
+    }
+
+    public function hello($id)
     {
         //
     }
