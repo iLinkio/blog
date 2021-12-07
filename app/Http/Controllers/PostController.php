@@ -19,11 +19,11 @@ class PostController extends Controller
 
         $pageTitle = "Hello";
 
-        //$posts = auth()->user()->posts;
+        $posts = auth()->user()->posts;
 
 
-
-        dd($pageTitle);
+        
+        //dd($pageTitle);
 
         return view('post.index', compact('posts', 'pageTitle'));
     }
@@ -35,7 +35,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        
+        $pageTitle = 'Create Post';
+        
+
+        return view('post.create', compact('pageTitle'));
     }
 
     /**
@@ -46,7 +50,32 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate(
+            [
+                'title' => 'required|unique:posts',
+                'body' => 'required',
+            ]
+        );
+        
+        //dd($request->all());
+        // $post = new Post();
+        // $post->title = $request->title;
+        // $post->body = $request->body;
+        // $post->user_id = auth()->id();
+        // $post->save();
+
+        //dd($post);
+
+        $data = $request->all();
+
+        $data['user_id'] = auth()->id();
+
+        Post::create($data);
+
+
+        return redirect()->route('post.index');
+
     }
 
     /**

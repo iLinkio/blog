@@ -21,8 +21,12 @@ Route::get('/', function () {
 
 
 
-Route::get('/hello', [PostController::class, 'hello'])->name('post.hello');
-Route::resource('post', PostController::class);
+Route::get('/posts', [PostController::class, 'index'])->name('post.index');
+//Route::resource('post', PostController::class);
+
+
+Route::get('/post/create', [PostController::class, 'create'])->middleware('auth')->name('post.create');
+Route::post('/post/create', [PostController::class, 'store'])->middleware('auth')->name('post.store');
 
 
 Route::get('/dashboard', function () {
