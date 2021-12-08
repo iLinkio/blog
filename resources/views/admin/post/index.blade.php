@@ -31,7 +31,7 @@
                                     <td><i class="mdi-delete"></i></td>
                                 </tr>
                             @endforeach
-                            
+                             
                             
                         </tbody>
                     </table>
