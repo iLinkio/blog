@@ -10,6 +10,12 @@ https://getcomposer.org/Composer-Setup.exe
 https://www.apachefriends.org/download.html
 ```
 
+* download and install Node JS
+
+```shell
+https://nodejs.org/en/download/
+```
+
 * Enable mysql in xampp
 
 * Command to create a new project of laravel
