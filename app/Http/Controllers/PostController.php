@@ -25,7 +25,7 @@ class PostController extends Controller
         
         //dd($pageTitle);
 
-        return view('post.index', compact('posts', 'pageTitle'));
+        return view('admin.post.index', compact('posts', 'pageTitle'));
     }
 
     /**
@@ -39,7 +39,7 @@ class PostController extends Controller
         $pageTitle = 'Create Post';
         
 
-        return view('post.create', compact('pageTitle'));
+        return view('admin.post.index', compact('pageTitle'));
     }
 
     /**
@@ -123,8 +123,11 @@ class PostController extends Controller
         //
     }
 
-    public function hello($id)
+    public function dashboard()
     {
-        //
+        
+
+        return view('admin.dashboard');
+
     }
 }

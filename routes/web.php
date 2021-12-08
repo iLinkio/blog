@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 
 
@@ -27,6 +27,7 @@ Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 
 Route::get('/post/create', [PostController::class, 'create'])->middleware('auth')->name('post.create');
 Route::post('/post/create', [PostController::class, 'store'])->middleware('auth')->name('post.store');
+Route::get('/dashboard1', [PostController::class, 'dashboard'])->middleware('auth')->name('post.dashboard');
 
 
 Route::get('/dashboard', function () {
