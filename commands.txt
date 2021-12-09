@@ -118,3 +118,10 @@ php artisan migrate
 ```  
 
 
+
+
+
+superadmin
+    admin
+        publisher, author
+            users

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class PostController extends Controller
 {
@@ -16,6 +19,8 @@ class PostController extends Controller
     {
 
         // return "index Function";
+
+        
 
         $pageTitle = "Hello";
 
@@ -128,6 +133,44 @@ class PostController extends Controller
         
 
         return view('admin.dashboard');
+
+    }
+    public function userCreate(Request $request)
+    {
+        
+
+        
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        if (auth()->user()->hasRole('superadmin')){
+
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+    
+            $user->attachRole($request->role);    
+        }
+        else
+            'not allowed';
+
+        
+
+        return redirect()->route('laratrust.roles.index');
+
+    }
+
+    public function userView()
+    {
+
+
+        return view('admin.users.view');
 
     }
 }

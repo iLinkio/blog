@@ -25,6 +25,8 @@ Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 //Route::resource('post', PostController::class);
 
 
+Route::get('/user/create', [PostController::class, 'userView'])->middleware(['auth', 'role:superadmin'])->name('post.userView');
+Route::post('/user/create', [PostController::class, 'userCreate'])->middleware(['auth', 'role:superadmin'])->name('post.userCreate');
 Route::get('/post/create', [PostController::class, 'create'])->middleware('auth')->name('post.create');
 Route::post('/post/create', [PostController::class, 'store'])->middleware('auth')->name('post.store');
 Route::get('/dashboard1', [PostController::class, 'dashboard'])->middleware('auth')->name('post.dashboard');
