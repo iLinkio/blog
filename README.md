@@ -112,8 +112,23 @@ composer require santigarcor/laratrust
 php artisan config:clear
 php artisan vendor:publish --tag="laratrust"
 php artisan laratrust:setup
+y
+
+php artisan laratrust:seeder (get file in config folder laratrust_seeder.php)
+
+php artisan vendor:publish --tag="laratrust-seeder"
+
+In the database/seeds/DatabaseSeeder.php file you have to add this to the run method:
+
+$this->call(LaratrustSeeder::class);
+
+php artisan vendor:publish --tag=laratrust-assets --force
+
+npm install && npm run dev
+
 composer dump-autoload
 php artisan migrate
+php artisan db:seed
 
 ```  
 
